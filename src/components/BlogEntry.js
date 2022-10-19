@@ -4,7 +4,7 @@ import BlogEntryRender from "./BlogEntryRender";
 import BlogSectionDropDown from "./BlogSectionDropDown";
 
 export default function BlogEntry() {
-  const SECTION_TYPES = { paragraph: "paragraph" };
+  const SECTION_TYPES = { paragraph: "paragraph", link: "link" };
   const [blogObject, setBlogObject] = useState();
   const paragraphRef = useRef("");
   const titleRef = useRef("");
@@ -20,7 +20,7 @@ export default function BlogEntry() {
   };
   return (
     <div className="flex flex-col items-center">
-      <BlogSectionDropDown />
+      <BlogSectionDropDown SECTION_TYPES={SECTION_TYPES} />
       <TextField inputRef={titleRef} placeholder="Title"></TextField>
       <TextField inputRef={paragraphRef} placeholder="Your Post"></TextField>
       <Button onClick={sendValue}>Submit</Button>
