@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import BlogEntry from "./components/BlogEntry";
+import App from "./App";
+import BlogArticle from "./components/Article/BlogArticle";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/blogentry" element={<BlogEntry />}></Route>
+        <Route path="/" element={<App />}>
+          <Route path="blogarticle" element={<BlogArticle />}></Route>
+        </Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

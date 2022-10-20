@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function BlogEntryRender({ blogObject }) {
+export default function BlogSectionRender({ blogObject }) {
   return (
     <div>
       {blogObject && (

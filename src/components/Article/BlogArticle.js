@@ -1,9 +1,7 @@
-import { Button, TextField } from "@mui/material";
-import { React, useRef, useState } from "react";
-import BlogEntryRender from "./BlogEntryRender";
-import BlogSectionDropDown from "./BlogSectionDropDown";
-
-export default function BlogEntry() {
+import { useRef, useState } from "react";
+import { TextField } from "@mui/material";
+import BlogSection from "../Section/BlogSection";
+export default function BlogArticle() {
   const SECTION_TYPES = {
     paragraph: "paragraph",
     link: "link",
@@ -30,14 +28,14 @@ export default function BlogEntry() {
 
   return (
     <div className="flex flex-col items-center">
-      <BlogSectionDropDown
-        SECTION_TYPES={SECTION_TYPES}
-        setAutocompleteValue={setAutocompleteValue}
-      />
       <TextField inputRef={titleRef} placeholder="Title"></TextField>
-      <TextField inputRef={paragraphRef} placeholder="Your Post"></TextField>
-      <Button onClick={sendValue}>Submit</Button>
-      <BlogEntryRender blogObject={blogObject} />
+      <BlogSection
+        sendValue={sendValue}
+        paragraphRef={paragraphRef}
+        setAutocompleteValue={setAutocompleteValue}
+        SECTION_TYPES={SECTION_TYPES}
+        blogObject={blogObject}
+      />
     </div>
   );
 }
