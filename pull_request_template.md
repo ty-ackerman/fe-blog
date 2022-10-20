@@ -1,10 +1,11 @@
 ## Why
 
-<!-- A short description of why this change is required & include context on the project -->
+<!-- List the changes you made in this PR - what did you add, update, or remove? Describe your changes here -->
 
 ## What
 
-<!-- List the changes you made in this PR - what did you add, update, or remove? Describe your changes here -->
+<!-- A short description of why this change is required & include context on the project -->
+
 
 ## Next steps
 
