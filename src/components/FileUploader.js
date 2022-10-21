@@ -8,13 +8,13 @@ export default function FileUploader({
 
   const handleFileInput = (e) => {
     const file = e.target.files[0];
-    if (file.size > 1024)
+    if (file.size > 1024000)
       onFileSelectError({ error: "File size cannot exceed more than 1MB" });
     else onFileSelectSuccess(file);
   };
 
   return (
-    <div className="file-uploader">
+    <div>
       <input type="file" onChange={handleFileInput}></input>
       <button
         onClick={(e) => fileInput.current && fileInput.current.click()}

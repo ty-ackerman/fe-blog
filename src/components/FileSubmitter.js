@@ -4,11 +4,13 @@ import FileUploader from "./FileUploader";
 export default function FileSubmitter({ sendValue }) {
   const [name, setName] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
-  const submitForm = () => {
+  const submitForm = (event) => {
+    event.preventDefault();
     sendValue();
     const formData = new FormData();
     formData.append("name", name);
     formData.append("file", selectedFile);
+    console.log(formData);
 
     // axios
     //   .post(UPLOAD_URL, formData)
@@ -16,12 +18,11 @@ export default function FileSubmitter({ sendValue }) {
     //     alert("File Upload success");
     //   })
     //   .catch((err) => alert("File Upload Error"));
-    console.log(formData);
   };
 
   console.log(selectedFile);
   return (
-    <div className="App">
+    <div>
       <form>
         <input
           type="text"
