@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-
 const UploadAndDisplayImage = ({ selectedImage, setSelectedImage }) => {
-  // console.log(URL.createObjectURL(selectedImage));
   return (
     <div>
       <h1>Upload and Display Image using React Hook's</h1>

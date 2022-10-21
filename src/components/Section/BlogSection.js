@@ -2,7 +2,6 @@ import { Button, TextField } from "@mui/material";
 import { React } from "react";
 import BlogSectionRender from "./BlogSectionRender";
 import BlogSectionDropDown from "./BlogSectionDropDown";
-import FileSubmitter from "../FileSubmitter";
 import UploadAndDisplayImage from "../UploadandDisplayImage";
 export default function BlogSection({
   sendValue,
@@ -34,17 +33,10 @@ export default function BlogSection({
         </>
       )}
       {autocompleteValue === "photo" && (
-        <>
-          {/* <TextField
-            inputRef={contentRef}
-            placeholder="Link Description"
-          ></TextField>
-          <TextField inputRef={linkRef} placeholder="Link"></TextField> */}
-          <UploadAndDisplayImage
-            selectedImage={selectedImage}
-            setSelectedImage={setSelectedImage}
-          />
-        </>
+        <UploadAndDisplayImage
+          selectedImage={selectedImage}
+          setSelectedImage={setSelectedImage}
+        />
       )}
       <Button onClick={sendValue}>Submit</Button>
       <BlogSectionRender blogObject={blogObject} />
