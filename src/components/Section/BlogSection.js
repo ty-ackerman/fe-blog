@@ -5,14 +5,15 @@ import BlogSectionDropDown from "./BlogSectionDropDown";
 import UploadAndDisplayImage from "../UploadandDisplayImage";
 export default function BlogSection({
   sendValue,
-  contentRef,
-  linkRef,
+  setContent,
+  setLink,
   setAutocompleteValue,
   SECTION_TYPES,
   blogObject,
   autocompleteValue,
   selectedImage,
   setSelectedImage,
+  sectionObj,
 }) {
   return (
     <div className="flex flex-col items-center">
@@ -21,15 +22,21 @@ export default function BlogSection({
         setAutocompleteValue={setAutocompleteValue}
       />
       {autocompleteValue === "paragraph" && (
-        <TextField inputRef={contentRef} placeholder="Paragraph"></TextField>
+        <TextField
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Paragraph"
+        ></TextField>
       )}
       {autocompleteValue === "link" && (
         <>
           <TextField
-            inputRef={contentRef}
+            onChange={(e) => setContent(e.target.value)}
             placeholder="Link Description"
           ></TextField>
-          <TextField inputRef={linkRef} placeholder="Link"></TextField>
+          <TextField
+            onChange={(e) => setLink(e.target.value)}
+            placeholder="Link"
+          ></TextField>
         </>
       )}
       {autocompleteValue === "photo" && (
@@ -38,7 +45,7 @@ export default function BlogSection({
           setSelectedImage={setSelectedImage}
         />
       )}
-      <Button onClick={sendValue}>Submit</Button>
+      <Button onClick={() => sendValue(sectionObj)}>Submit</Button>
       <BlogSectionRender blogObject={blogObject} />
     </div>
   );
