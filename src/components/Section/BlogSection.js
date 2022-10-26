@@ -47,7 +47,11 @@ export default function BlogSection({
         />
       )}
       <Button onClick={() => sendValue(sectionObj)}>Submit</Button>
-      <BlogSectionRender blogObject={blogObject} articleObj={articleObj} />
+      <BlogSectionRender
+        blogObject={blogObject}
+        articleObj={articleObj}
+        selectedImage={selectedImage}
+      />
     </div>
   );
 }

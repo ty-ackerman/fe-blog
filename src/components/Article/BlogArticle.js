@@ -10,35 +10,34 @@ export default function BlogArticle() {
   const [sections, setSections] = useState([]);
   const [autocompleteValue, setAutocompleteValue] = useState("paragraph");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [content, setContent] = useState();
-  const [link, setLink] = useState();
+  const [content, setContent] = useState("");
+  const [link, setLink] = useState("");
   const titleRef = useRef("");
   const sectionObj = {
-    section: {
-      type: SECTION_TYPES[autocompleteValue],
-      ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
-        content: content,
-      }),
-      ...(SECTION_TYPES[autocompleteValue] === "link" && {
-        content: content,
-        link: link,
-      }),
-      ...(SECTION_TYPES[autocompleteValue] === "photo" && {
-        photo: selectedImage,
-      }),
-    },
+    type: SECTION_TYPES[autocompleteValue],
+    ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
+      content: content,
+    }),
+    ...(SECTION_TYPES[autocompleteValue] === "link" && {
+      content: content,
+      link: link,
+    }),
+    ...(SECTION_TYPES[autocompleteValue] === "photo" && {
+      photo: selectedImage,
+    }),
   };
-  // this is the article object that will be stored in the database
   const sendValue = (section) => {
     const newSections = [...sections, section];
     setSections(newSections);
   };
+  // this is the article object that will be stored in the database
   const articleObj = {
     title: titleRef.current.value,
     date: new Date().toString(),
-    ...sections,
+    section: sections,
   };
   console.log(articleObj);
+  console.log(sections);
 
   return (
     <div className="flex flex-col items-center">

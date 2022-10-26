@@ -1,17 +1,22 @@
 import React from "react";
 
-export default function BlogSectionRender({ blogObject, articleObj }) {
-  // console.log(blogObject);
+export default function BlogSectionRender({
+  blogObject,
+  articleObj,
+  selectedImage,
+}) {
+  console.log(blogObject);
   return (
     <div>
       <div className="text-3xl font-bold">{articleObj.title}</div>
+      <div>{articleObj.date}</div>
       {blogObject &&
         blogObject.map((x) => (
           <>
-            <div>{x.section.content}</div>
+            <div>{x.content}</div>
 
-            <div className="italic">{x.section.link}</div>
-            {x.section.photo && <div>{x.section.photo.name}</div>}
+            <div className="italic">{x.link}</div>
+            {x.photo && <div>{x.photo.name}</div>}
           </>
         ))}
     </div>
