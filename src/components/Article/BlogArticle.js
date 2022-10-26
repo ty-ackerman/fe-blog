@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { TextField } from "@mui/material";
 import BlogSection from "../Section/BlogSection";
 export default function BlogArticle() {
@@ -12,10 +12,8 @@ export default function BlogArticle() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [content, setContent] = useState();
   const [link, setLink] = useState();
-
+  const titleRef = useRef("");
   const sectionObj = {
-    // title: titleRef.current.value,
-    // date: new Date().toString(),
     section: {
       type: SECTION_TYPES[autocompleteValue],
       ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
@@ -30,16 +28,21 @@ export default function BlogArticle() {
       }),
     },
   };
+  // this is the article object that will be stored in the database
   const sendValue = (section) => {
     const newSections = [...sections, section];
     setSections(newSections);
   };
-
-  console.log(sections);
+  const articleObj = {
+    title: titleRef.current.value,
+    date: new Date().toString(),
+    ...sections,
+  };
+  console.log(articleObj);
 
   return (
     <div className="flex flex-col items-center">
-      <TextField placeholder="Title"></TextField>
+      <TextField inputRef={titleRef} placeholder="Title"></TextField>
 
       <BlogSection
         setContent={setContent}
@@ -52,6 +55,7 @@ export default function BlogArticle() {
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
+        articleObj={articleObj}
       />
     </div>
   );

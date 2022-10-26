@@ -14,6 +14,7 @@ export default function BlogSection({
   selectedImage,
   setSelectedImage,
   sectionObj,
+  articleObj,
 }) {
   return (
     <div className="flex flex-col items-center">
@@ -46,7 +47,7 @@ export default function BlogSection({
         />
       )}
       <Button onClick={() => sendValue(sectionObj)}>Submit</Button>
-      <BlogSectionRender blogObject={blogObject} />
+      <BlogSectionRender blogObject={blogObject} articleObj={articleObj} />
     </div>
   );
 }
