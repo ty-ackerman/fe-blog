@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { TextField } from "@mui/material";
 import BlogSection from "../Section/BlogSection";
+import BlogSectionRender from "../Section/BlogSectionRender";
 export default function BlogArticle() {
   const SECTION_TYPES = {
     paragraph: "paragraph",
@@ -26,6 +27,7 @@ export default function BlogArticle() {
       photo: selectedImage,
     }),
   };
+
   const sendValue = (section) => {
     const newSections = [...sections, section];
     setSections(newSections);
@@ -55,6 +57,11 @@ export default function BlogArticle() {
         setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
         articleObj={articleObj}
+      />
+      <BlogSectionRender
+        blogObject={sections}
+        articleObj={articleObj}
+        selectedImage={selectedImage}
       />
     </div>
   );

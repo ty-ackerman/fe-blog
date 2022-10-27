@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { React } from "react";
-import BlogSectionRender from "./BlogSectionRender";
+
 import BlogSectionDropDown from "./BlogSectionDropDown";
 import UploadAndDisplayImage from "../UploadandDisplayImage";
 export default function BlogSection({
@@ -9,15 +9,16 @@ export default function BlogSection({
   setLink,
   setAutocompleteValue,
   SECTION_TYPES,
-  blogObject,
+
   autocompleteValue,
   selectedImage,
   setSelectedImage,
   sectionObj,
-  articleObj,
+
+  handleSubmit,
 }) {
   return (
-    <div className="flex flex-col items-center">
+    <form onSubmit={handleSubmit} className="flex flex-col items-center">
       <BlogSectionDropDown
         SECTION_TYPES={SECTION_TYPES}
         setAutocompleteValue={setAutocompleteValue}
@@ -47,11 +48,6 @@ export default function BlogSection({
         />
       )}
       <Button onClick={() => sendValue(sectionObj)}>Submit</Button>
-      <BlogSectionRender
-        blogObject={blogObject}
-        articleObj={articleObj}
-        selectedImage={selectedImage}
-      />
-    </div>
+    </form>
   );
 }
