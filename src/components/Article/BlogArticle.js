@@ -18,18 +18,23 @@ export default function BlogArticle() {
     type: SECTION_TYPES[autocompleteValue],
     ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
       content: content,
+      // id: Math.random(),
     }),
     ...(SECTION_TYPES[autocompleteValue] === "link" && {
       content: content,
       link: link,
+      // id: Math.random(),
     }),
     ...(SECTION_TYPES[autocompleteValue] === "photo" && {
       photo: selectedImage,
+      // id: Math.random(),
     }),
   };
 
-  const sendValue = (section) => {
+  const sendValue = (section, images) => {
+    // const newImages = [...selectedImage, images];
     const newSections = [...sections, section];
+    // setSelectedImage(newImages);
     setSections(newSections);
   };
   // this is the article object that will be stored in the database
@@ -38,9 +43,17 @@ export default function BlogArticle() {
     date: new Date().toString(),
     section: sections,
   };
+  const removeSection = (id) => {
+    const removeArr = [...sections].filter((section) => section.id !== id);
+    setSections(removeArr);
+  };
+  const updateSection = (sectionId, newValue) => {
+    setSections((prev) =>
+      prev.map((item) => (item.id === sectionId ? newValue : item))
+    );
+  };
   console.log(articleObj);
   console.log(sections);
-
   return (
     <div className="flex flex-col items-center">
       <TextField inputRef={titleRef} placeholder="Title"></TextField>
@@ -55,12 +68,17 @@ export default function BlogArticle() {
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
-        contnet={content}
+        content={content}
+        link={link}
+        sections={sections}
+        setSections={setSections}
       />
       <BlogSectionRender
         blogObject={sections}
         articleObj={articleObj}
         selectedImage={selectedImage}
+        removeSection={removeSection}
+        updateSection={updateSection}
       />
     </div>
   );
