@@ -9,14 +9,15 @@ export default function BlogSection({
   setLink,
   setAutocompleteValue,
   SECTION_TYPES,
-
   autocompleteValue,
   selectedImage,
   setSelectedImage,
   sectionObj,
-
-  handleSubmit,
 }) {
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    sendValue(sectionObj);
+  };
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-center">
       <BlogSectionDropDown
@@ -47,7 +48,13 @@ export default function BlogSection({
           setSelectedImage={setSelectedImage}
         />
       )}
-      <Button onClick={() => sendValue(sectionObj)}>Submit</Button>
+      <Button
+        onClick={() => {
+          handleSubmit(sectionObj);
+        }}
+      >
+        Submit
+      </Button>
     </form>
   );
 }

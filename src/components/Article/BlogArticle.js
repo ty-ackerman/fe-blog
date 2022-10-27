@@ -52,11 +52,10 @@ export default function BlogArticle() {
         setAutocompleteValue={setAutocompleteValue}
         autocompleteValue={autocompleteValue}
         SECTION_TYPES={SECTION_TYPES}
-        blogObject={sections}
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
-        articleObj={articleObj}
+        contnet={content}
       />
       <BlogSectionRender
         blogObject={sections}
