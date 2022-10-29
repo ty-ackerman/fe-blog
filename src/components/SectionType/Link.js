@@ -11,9 +11,9 @@ export default function Link({
   sendValue,
   linkObj,
 }) {
-  const linkSubmit = () => {
-    sendValue({ ...linkObj, id: Math.random() });
-    setLink("");
+  const handleSetLink = (e) => {
+    const newSetLink = e.target.value;
+    setLink(newSetLink);
   };
   return (
     <div>
@@ -26,16 +26,9 @@ export default function Link({
       ></TextField>
       <TextField
         value={link}
-        onChange={(e) => setLink(e.target.value)}
+        onChange={handleSetLink}
         placeholder="Link"
       ></TextField>
-      <Button
-        onClick={() => {
-          linkSubmit(linkObj);
-        }}
-      >
-        Add Link
-      </Button>
 
       {/* )} */}
     </div>

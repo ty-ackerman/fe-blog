@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Typography } from "@mui/material";
+import { TextField, Typography, Button } from "@mui/material";
 import Tooltip, { tooltipClasses } from "@mui/material/Tooltip";
 import Link from "./Link";
 import BlogSectionDropDown from "../Section/BlogSectionDropDown";
@@ -14,9 +14,14 @@ export default function Paragraph({
   sendValue,
   linkObj,
 }) {
+  const linkSubmit = () => {
+    sendValue({ ...linkObj, id: Math.random() });
+    setLink("");
+  };
   return (
     <div>
       <Tooltip
+        interactive="true"
         title={
           <React.Fragment>
             {/* <BlogSectionDropDown /> */}
@@ -30,6 +35,13 @@ export default function Paragraph({
               linkObj={linkObj}
               sendValue={sendValue}
             />
+            <Button
+              onClick={() => {
+                linkSubmit(linkObj);
+              }}
+            >
+              Add Link
+            </Button>
           </React.Fragment>
         }
       >
