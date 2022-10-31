@@ -19,7 +19,9 @@ import "./styles.css";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
-
+import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
+import { Button } from "@mui/material";
+import { useRef } from "react";
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
 }
@@ -48,6 +50,12 @@ const editorConfig = {
 };
 
 export default function Editor() {
+  const editorStateRef = useRef();
+  // this function is what will be called to submit data to backend
+  const saveContent = (content) => {
+    console.log(content);
+  };
+  console.log(editorStateRef);
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -57,7 +65,21 @@ export default function Editor() {
             contentEditable={<ContentEditable className="editor-input" />}
             placeholder={<Placeholder />}
           />
+
           <HistoryPlugin />
+          <OnChangePlugin
+            onChange={(editorState) => (editorStateRef.current = editorState)}
+          />
+          <Button
+            label="Save"
+            onClick={() => {
+              if (editorStateRef.current) {
+                saveContent(JSON.stringify(editorStateRef.current));
+              }
+            }}
+          >
+            Save
+          </Button>
           <TreeViewPlugin />
           <AutoFocusPlugin />
           <CodeHighlightPlugin />
