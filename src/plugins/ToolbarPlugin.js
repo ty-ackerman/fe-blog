@@ -689,6 +689,14 @@ export default function ToolbarPlugin() {
           >
             <i className="format justify-align" />
           </button>{" "}
+          <Divider />
+          <button
+            onClick={() => {
+              console.log("image adder");
+            }}
+          >
+            image
+          </button>
         </>
       )}
     </div>

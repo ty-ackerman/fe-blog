@@ -22,6 +22,7 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { Button } from "@mui/material";
 import { useRef } from "react";
+
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
 }
@@ -84,6 +85,7 @@ export default function Editor() {
           <CodeHighlightPlugin />
           <ListPlugin />
           <LinkPlugin />
+
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
