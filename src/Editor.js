@@ -15,7 +15,7 @@ import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { ListPlugin } from "@lexical/react/LexicalListPlugin";
 import { MarkdownShortcutPlugin } from "@lexical/react/LexicalMarkdownShortcutPlugin";
 import { TRANSFORMERS } from "@lexical/markdown";
-import "./styles.css";
+// import "./styles.css";
 import ListMaxIndentLevelPlugin from "./plugins/ListMaxIndentLevelPlugin";
 import CodeHighlightPlugin from "./plugins/CodeHighlightPlugin";
 import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
@@ -71,7 +71,6 @@ export default function Editor() {
             onChange={(editorState) => (editorStateRef.current = editorState)}
           />
           <Button
-            label="Save"
             onClick={() => {
               if (editorStateRef.current) {
                 saveContent(JSON.stringify(editorStateRef.current));
