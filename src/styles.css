@@ -251,12 +251,14 @@ h1 {
   padding: 0;
   margin: 0;
   margin-left: 16px;
+  list-style-type: numbered;
 }
 
 .editor-list-ul {
   padding: 0;
   margin: 0;
   margin-left: 16px;
+  list-style-type: circle;
 }
 
 .editor-listitem {
