@@ -22,12 +22,13 @@ import AutoLinkPlugin from "./plugins/AutoLinkPlugin";
 import { OnChangePlugin } from "@lexical/react/LexicalOnChangePlugin";
 import { Button } from "@mui/material";
 import { useRef } from "react";
-
+import ArticleRender from "./components/ArticleRender";
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
 }
 
 const editorConfig = {
+  editable: true,
   // The editor theme
   theme: ExampleTheme,
   // Handling of errors during update
@@ -55,8 +56,13 @@ export default function Editor() {
   // this function is what will be called to submit data to backend
   const saveContent = (content) => {
     console.log(content);
+    editorConfig.editable = false;
+    console.log(editorConfig.editable);
   };
   console.log(editorStateRef);
+
+  const isEditable = editorConfig.editable;
+  console.log(isEditable);
   return (
     <LexicalComposer initialConfig={editorConfig}>
       <div className="editor-container">
@@ -85,10 +91,10 @@ export default function Editor() {
           <CodeHighlightPlugin />
           <ListPlugin />
           <LinkPlugin />
-
           <AutoLinkPlugin />
           <ListMaxIndentLevelPlugin maxDepth={7} />
           <MarkdownShortcutPlugin transformers={TRANSFORMERS} />
+          <ArticleRender editorStateRef={editorStateRef} />
         </div>
       </div>
     </LexicalComposer>
