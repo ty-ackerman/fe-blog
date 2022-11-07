@@ -15,7 +15,6 @@ const UploadAndDisplayImage = ({ selectedImage, setSelectedImage }) => {
       )}
       <br />
 
-      <br />
       <input
         type="file"
         name="myImage"

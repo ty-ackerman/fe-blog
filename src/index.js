@@ -5,7 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import App from "./App";
 import BlogArticle from "./components/Article/BlogArticle";
-
+import UserInput from "./UserInput";
+import Editor from "./Editor";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ root.render(
         <Route path="/" element={<App />}>
           <Route path="blogarticle" element={<BlogArticle />}></Route>
         </Route>
+        <Route path="test" element={<Editor />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
