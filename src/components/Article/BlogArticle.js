@@ -18,20 +18,22 @@ export default function BlogArticle() {
     type: SECTION_TYPES[autocompleteValue],
     ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
       content: content,
-      // id: Math.random(),
     }),
     ...(SECTION_TYPES[autocompleteValue] === "link" && {
       content: content,
       link: link,
-      // id: Math.random(),
     }),
     ...(SECTION_TYPES[autocompleteValue] === "photo" && {
       photo: selectedImage,
-      // id: Math.random(),
     }),
   };
+  const linkObj = {
+    type: "link",
+    content: content,
+    link: link,
+  };
 
-  const sendValue = (section, images) => {
+  const sendValue = (section) => {
     // const newImages = [...selectedImage, images];
     const newSections = [...sections, section];
     // setSelectedImage(newImages);
@@ -68,6 +70,7 @@ export default function BlogArticle() {
         selectedImage={selectedImage}
         setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
+        linkObj={linkObj}
         content={content}
         link={link}
         sections={sections}

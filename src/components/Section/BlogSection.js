@@ -18,6 +18,7 @@ export default function BlogSection({
   link,
   sections,
   setSections,
+  linkObj,
 }) {
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -26,6 +27,10 @@ export default function BlogSection({
     setLink("");
 
     setSelectedImage(null);
+  };
+
+  const linkSubmit = () => {
+    sendValue({ ...linkObj, id: Math.random() });
   };
 
   return (
@@ -38,14 +43,21 @@ export default function BlogSection({
         autocompleteValue={autocompleteValue}
         content={content}
         setContent={setContent}
+        link={link}
+        setLink={setLink}
+        handleSubmit={handleSubmit}
+        sectionObj={sectionObj}
+        linkSubmit={linkSubmit}
+        linkObj={linkObj}
+        sendValue={sendValue}
       />
-      <Link
+      {/* <Link
         autocompleteValue={autocompleteValue}
         content={content}
         setContent={setContent}
         link={link}
         setLink={setLink}
-      />
+      /> */}
       {autocompleteValue === "photo" && (
         <UploadAndDisplayImage
           selectedImage={selectedImage}
