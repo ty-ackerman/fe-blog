@@ -7,6 +7,7 @@ import App from "./App";
 import BlogArticle from "./components/Article/BlogArticle";
 import UserInput from "./UserInput";
 import Editor from "./Editor";
+import NoteViewer from "./Verbum";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ root.render(
           <Route path="blogarticle" element={<BlogArticle />}></Route>
         </Route>
         <Route path="test" element={<Editor />}></Route>
+        <Route path="verbum" element={<NoteViewer />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
