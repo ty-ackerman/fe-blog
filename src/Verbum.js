@@ -1,25 +1,20 @@
-import { FC } from "react";
 import { useRef, useState } from "react";
 import {
   EditorComposer,
   Editor,
   ToolbarPlugin,
   AlignDropdown,
-  BackgroundColorPicker,
   BoldButton,
   CodeFormatButton,
-  FloatingLinkEditor,
-  FontFamilyDropdown,
-  FontSizeDropdown,
   InsertDropdown,
   InsertLinkButton,
   ItalicButton,
-  TextColorPicker,
   TextFormatDropdown,
   UnderlineButton,
   Divider,
 } from "verbum";
 import { Button } from "@mui/material";
+
 const NoteViewer = () => {
   const [article, setArticle] = useState({});
   const editorStateRef = useRef();
@@ -28,12 +23,15 @@ const NoteViewer = () => {
     console.log(content);
   };
   const deepFilter = (obj, filter) => {
+    //save under config file
+    const properties = ["direction", "type", "format"];
     //iterate the object
     for (let key in obj) {
       const val = obj[key];
-      if (key === "direction") {
+      if (properties.includes(key)) {
         delete obj[key];
       }
+
       //if val is also object (nested)
       if (typeof val === "object") {
         //recur
@@ -58,6 +56,7 @@ const NoteViewer = () => {
   deepFilter(article, (s) => typeof s === "string");
 
   console.log(article);
+  console.log(JSON.stringify(article));
 
   return (
     <EditorComposer>
@@ -66,16 +65,12 @@ const NoteViewer = () => {
         onChange={(editorState) => (editorStateRef.current = editorState)}
       >
         <ToolbarPlugin defaultFontSize="20px">
-          <FontFamilyDropdown />
-          <FontSizeDropdown />
-          <Divider />
           <BoldButton />
           <ItalicButton />
           <UnderlineButton />
           <CodeFormatButton />
           <InsertLinkButton />
-          <TextColorPicker />
-          <BackgroundColorPicker />
+
           <TextFormatDropdown />
           <Divider />
           <InsertDropdown enablePoll={true} />
