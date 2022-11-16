@@ -14,7 +14,7 @@ import {
   Divider,
 } from "verbum";
 import { Button } from "@mui/material";
-
+import "./App.css";
 const NoteViewer = () => {
   const [article, setArticle] = useState({});
   const editorStateRef = useRef();
