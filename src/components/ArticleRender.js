@@ -1,14 +1,11 @@
-import { map } from "draft-js/lib/DefaultDraftBlockRenderMap";
 import React from "react";
 import { sampledata } from "../sampledata";
 export default function ArticleRender() {
   return (
     <div>
+      {console.log(sampledata.root.children)}
       {sampledata.root.children.map((x) => {
-        console.log(x);
-        if (x.children[0].text) {
-          return <div>{x.children[0].text}</div>;
-        }
+        if (x?.tag === "h1") return <h1>{x?.children[0]?.text}</h1>;
       })}
     </div>
   );
