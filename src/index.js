@@ -5,12 +5,14 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NoteViewer from "./Verbum";
+import ArticleRender from "./components/ArticleRender";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="verbum" element={<NoteViewer />}></Route>
+        <Route path="render" element={<ArticleRender />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
