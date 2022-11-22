@@ -3,10 +3,7 @@ import { sampledata } from "../sampledata";
 export default function ArticleRender() {
   return (
     <div>
-      {/* {console.log(sampledata.root.children)} */}
       {sampledata.root.children.map((x) => {
-        console.log(x.children);
-
         switch (x?.tag) {
           case "h1":
             return <h1>{x?.children[0]?.text}</h1>;
@@ -17,23 +14,26 @@ export default function ArticleRender() {
           //render for bulleted list
           case "ul":
             return (
-              <p>
-                {x?.children[0].children?.map((x) => {
-                  return x?.text;
-                })}
-              </p>
+              <ul>
+                <li>
+                  {x?.children[0].children?.map((x) => {
+                    return x?.text;
+                  })}
+                </li>
+              </ul>
             );
           //render for organized list
           case "ol":
             return (
-              <p>
-                {x?.children[0].children?.map((x) => {
-                  return x?.text;
-                })}
-              </p>
+              <ol>
+                <li>
+                  {x?.children[0].children?.map((x) => {
+                    return x?.text;
+                  })}
+                </li>
+              </ol>
             );
           // render if there is no tag and children is an array
-
           default:
             return (
               <p>

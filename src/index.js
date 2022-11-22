@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NoteViewer from "./Verbum";
 import ArticleRender from "./components/ArticleRender";
+import Editor from "./Editor";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
@@ -13,6 +14,7 @@ root.render(
       <Routes>
         <Route path="verbum" element={<NoteViewer />}></Route>
         <Route path="render" element={<ArticleRender />}></Route>
+        <Route path="lexical" element={<Editor />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

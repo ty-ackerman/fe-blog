@@ -10,12 +10,20 @@
   align-items: center;
   flex-direction: row;
 }
-/* h1 {
+h1 {
   font-size: 48px;
-} */
-/* h2 {
+}
+h2 {
   font-size: 36px;
 }
 h3 {
   font-size: 24px;
-} */
+}
+ul li {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+ol li {
+  list-style-type: numbered;
+  list-style-position: inside;
+}

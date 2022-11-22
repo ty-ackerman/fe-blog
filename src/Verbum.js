@@ -53,7 +53,7 @@ const NoteViewer = () => {
       }
     }
   };
-  deepFilter(article, (s) => typeof s === "string");
+  deepFilter(article, (s) => typeof s);
 
   console.log(article);
   console.log(JSON.stringify(article));
