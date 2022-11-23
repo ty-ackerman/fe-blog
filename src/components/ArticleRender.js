@@ -4,6 +4,13 @@ export default function ArticleRender() {
   return (
     <div>
       {sampledata.root.children.map((x) => {
+        // if the type is quote
+        switch (x?.type) {
+          case "quote":
+            return <i>"{x?.children[0]?.text}"</i>;
+          default:
+            break;
+        }
         switch (x?.tag) {
           case "h1":
             return <h1>{x?.children[0]?.text}</h1>;
@@ -40,6 +47,7 @@ export default function ArticleRender() {
                 {x?.children?.map((x) => {
                   switch (x?.format) {
                     //bold
+
                     case 1:
                       return <b>{x?.text}</b>;
                     //italic

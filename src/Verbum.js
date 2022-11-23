@@ -24,7 +24,7 @@ const NoteViewer = () => {
   };
   const deepFilter = (obj, filter) => {
     //save under config file
-    const properties = ["direction", "type"];
+    const properties = ["direction"];
     //iterate the object
     for (let key in obj) {
       const val = obj[key];
