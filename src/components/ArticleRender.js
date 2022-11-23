@@ -11,6 +11,14 @@ export default function ArticleRender() {
           default:
             break;
         }
+        switch (x?.format) {
+          case "center":
+            return <div className="center-align">{x?.children[0]?.text}</div>;
+          case "right":
+            return <div className="right-align">{x?.children[0]?.text}</div>;
+          default:
+            break;
+        }
         switch (x?.tag) {
           case "h1":
             return <h1>{x?.children[0]?.text}</h1>;
