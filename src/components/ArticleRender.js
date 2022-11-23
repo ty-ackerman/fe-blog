@@ -36,11 +36,35 @@ export default function ArticleRender() {
           // render if there is no tag and children is an array
           default:
             return (
-              <p>
+              <div>
                 {x?.children?.map((x) => {
-                  return x?.text;
+                  switch (x?.format) {
+                    //bold
+                    case 1:
+                      return <b>{x?.text}</b>;
+                    //italic
+                    case 2:
+                      return <i>{x?.text}</i>;
+                    //underline
+                    case 8:
+                      return <u>{x?.text}</u>;
+                    // bold underline and italic
+                    case 11:
+                      return (
+                        <b>
+                          <i>
+                            <u>{x?.text}</u>
+                          </i>
+                        </b>
+                      );
+                    //codeblock
+                    case 16:
+                      return <div className="codeblock">{x?.text}</div>;
+                    default:
+                      return x?.text;
+                  }
                 })}
-              </p>
+              </div>
             );
         }
       })}

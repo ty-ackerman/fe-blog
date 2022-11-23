@@ -27,3 +27,6 @@ ol li {
   list-style-type: numbered;
   list-style-position: inside;
 }
+.codeblock {
+  background-color: grey;
+}
