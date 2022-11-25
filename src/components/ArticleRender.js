@@ -30,11 +30,10 @@ export default function ArticleRender() {
           case "ul":
             return (
               <ul>
-                <li>
-                  {x?.children[0].children?.map((x) => {
-                    return x?.text;
-                  })}
-                </li>
+                {x?.children?.map((x) => {
+                  console.log(x?.children[0].text);
+                  return <li>{x?.children[0].text}</li>;
+                })}
               </ul>
             );
           //render for organized list
