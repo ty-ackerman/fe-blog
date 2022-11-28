@@ -10,6 +10,24 @@ export const sampledata = {
       },
       {
         children: [
+          { format: 0, mode: "normal", text: "swdwadw", type: "text" },
+        ],
+        format: "",
+        indent: 0,
+        type: "heading",
+        tag: "h2",
+      },
+      {
+        children: [
+          { format: 0, mode: "normal", text: "wdwdwddw", type: "text" },
+        ],
+        format: "",
+        indent: 0,
+        type: "heading",
+        tag: "h1",
+      },
+      {
+        children: [
           {
             format: 0,
             mode: "normal",
@@ -21,6 +39,15 @@ export const sampledata = {
         indent: 0,
         type: "heading",
         tag: "h2",
+      },
+      {
+        children: [
+          { format: 0, mode: "normal", text: "curveball", type: "text" },
+        ],
+        format: "",
+        indent: 0,
+        type: "heading",
+        tag: "h3",
       },
       {
         children: [
@@ -118,6 +145,15 @@ export const sampledata = {
             type: "listitem",
             value: 1,
           },
+          {
+            children: [
+              { format: 0, mode: "normal", text: "number 2", type: "text" },
+            ],
+            format: "",
+            indent: 0,
+            type: "listitem",
+            value: 2,
+          },
         ],
         format: "",
         indent: 0,
@@ -157,6 +193,7 @@ export const sampledata = {
         indent: 0,
         type: "paragraph",
       },
+      { children: [], format: "", indent: 0, type: "paragraph" },
     ],
     format: "",
     indent: 0,
