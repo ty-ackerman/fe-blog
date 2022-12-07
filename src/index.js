@@ -3,21 +3,20 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "./App";
-import BlogArticle from "./components/Article/BlogArticle";
-import UserInput from "./UserInput";
-import Editor from "./Editor";
+import BasicExample from "./components/Navbar/Navbar";
 import NoteViewer from "./Verbum";
+import ArticleRender from "./components/ArticleRender";
+import Editor from "./Editor";
+import "bootstrap/dist/css/bootstrap.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    <BasicExample />
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="blogarticle" element={<BlogArticle />}></Route>
-        </Route>
-        <Route path="test" element={<Editor />}></Route>
         <Route path="verbum" element={<NoteViewer />}></Route>
+        <Route path="render" element={<ArticleRender />}></Route>
+        <Route path="lexical" element={<Editor />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

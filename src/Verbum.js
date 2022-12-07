@@ -1,31 +1,63 @@
-import { FC } from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   EditorComposer,
   Editor,
   ToolbarPlugin,
   AlignDropdown,
-  BackgroundColorPicker,
   BoldButton,
   CodeFormatButton,
-  FloatingLinkEditor,
-  FontFamilyDropdown,
-  FontSizeDropdown,
   InsertDropdown,
   InsertLinkButton,
   ItalicButton,
-  TextColorPicker,
   TextFormatDropdown,
   UnderlineButton,
   Divider,
 } from "verbum";
 import { Button } from "@mui/material";
+import "./App.css";
 const NoteViewer = () => {
+  const [article, setArticle] = useState({});
   const editorStateRef = useRef();
   const saveContent = (content) => {
+    setArticle(content);
     console.log(content);
   };
-  console.log(editorStateRef);
+  const deepFilter = (obj, filter) => {
+    //save under config file
+    const properties = ["direction", "detail", "style", "version"];
+    //iterate the object
+    for (let key in obj) {
+      const val = obj[key];
+      if (properties.includes(key)) {
+        delete obj[key];
+      }
+
+      //if val is also object (nested)
+      if (typeof val === "object") {
+        //recur
+        deepFilter(val, filter);
+      }
+      // normal value
+      else {
+        //current val fails filter condition
+        //delete it
+        if (filter(val) === false) {
+          delete obj[key];
+        }
+      }
+
+      //if value is empty obj
+      //delete it
+      if (JSON.stringify(val) === "{}") {
+        delete obj[key];
+      }
+    }
+  };
+  deepFilter(article, (s) => typeof s);
+
+  console.log(article);
+  console.log(JSON.stringify(article));
+
   return (
     <EditorComposer>
       <Editor
@@ -33,16 +65,12 @@ const NoteViewer = () => {
         onChange={(editorState) => (editorStateRef.current = editorState)}
       >
         <ToolbarPlugin defaultFontSize="20px">
-          <FontFamilyDropdown />
-          <FontSizeDropdown />
-          <Divider />
           <BoldButton />
           <ItalicButton />
           <UnderlineButton />
           <CodeFormatButton />
           <InsertLinkButton />
-          <TextColorPicker />
-          <BackgroundColorPicker />
+
           <TextFormatDropdown />
           <Divider />
           <InsertDropdown enablePoll={true} />
@@ -52,7 +80,7 @@ const NoteViewer = () => {
         <Button
           onClick={() => {
             if (editorStateRef.current) {
-              saveContent(editorStateRef.current);
+              saveContent(JSON.parse(editorStateRef.current));
             }
           }}
         >
