@@ -7,6 +7,7 @@ import BasicExample from "./components/Navbar/Navbar";
 import NoteViewer from "./Verbum";
 import ArticleRender from "./components/ArticleRender";
 import Editor from "./Editor";
+import BlogArticle from "./components/Article/BlogArticle";
 import "bootstrap/dist/css/bootstrap.css";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,7 @@ root.render(
       <Routes>
         <Route path="verbum" element={<NoteViewer />}></Route>
         <Route path="render" element={<ArticleRender />}></Route>
-        <Route path="lexical" element={<Editor />}></Route>
+        <Route path="lexical" element={<BlogArticle />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

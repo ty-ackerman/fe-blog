@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { TextField } from "@mui/material";
 import BlogSection from "../Section/BlogSection";
 import BlogSectionRender from "../Section/BlogSectionRender";
+
 export default function BlogArticle() {
   const SECTION_TYPES = {
     paragraph: "paragraph",
@@ -14,6 +15,31 @@ export default function BlogArticle() {
   const [content, setContent] = useState("");
   const [link, setLink] = useState("");
   const titleRef = useRef("");
+  const descriptionRef = useRef("");
+  const [showComponent, setShowComponent] = useState([]);
+
+  const handleButtonClick = () => {
+    setShowComponent([
+      ...showComponent,
+      <BlogSection
+        setContent={setContent}
+        setLink={setLink}
+        sendValue={sendValue}
+        setAutocompleteValue={setAutocompleteValue}
+        autocompleteValue={autocompleteValue}
+        SECTION_TYPES={SECTION_TYPES}
+        selectedImage={selectedImage}
+        setSelectedImage={setSelectedImage}
+        sectionObj={sectionObj}
+        linkObj={linkObj}
+        content={content}
+        link={link}
+        sections={sections}
+        setSections={setSections}
+        key={showComponent.length}
+      />,
+    ]);
+  };
   const sectionObj = {
     type: SECTION_TYPES[autocompleteValue],
     ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
@@ -42,6 +68,7 @@ export default function BlogArticle() {
   // this is the article object that will be stored in the database
   const articleObj = {
     title: titleRef.current.value,
+    description: descriptionRef.current.value,
     date: new Date().toString(),
     section: sections,
   };
@@ -59,6 +86,10 @@ export default function BlogArticle() {
   return (
     <div className="flex flex-col items-center">
       <TextField inputRef={titleRef} placeholder="Title"></TextField>
+      <TextField
+        inputRef={descriptionRef}
+        placeholder="Description"
+      ></TextField>
 
       <BlogSection
         setContent={setContent}
@@ -75,7 +106,10 @@ export default function BlogArticle() {
         link={link}
         sections={sections}
         setSections={setSections}
+        key={showComponent.length}
       />
+      {showComponent.map((item) => item)}
+      <button onClick={handleButtonClick}>Click to add component</button>
       <BlogSectionRender
         blogObject={sections}
         articleObj={articleObj}

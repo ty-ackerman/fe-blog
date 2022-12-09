@@ -15,6 +15,7 @@ import {
 } from "verbum";
 import { Button } from "@mui/material";
 import "./App.css";
+import TagsInput from "./components/TagsInput/TagsInput";
 const NoteViewer = () => {
   const [article, setArticle] = useState({});
   const editorStateRef = useRef();
@@ -60,6 +61,7 @@ const NoteViewer = () => {
 
   return (
     <EditorComposer>
+      <TagsInput />
       <Editor
         hashtagsEnabled={true}
         onChange={(editorState) => (editorStateRef.current = editorState)}

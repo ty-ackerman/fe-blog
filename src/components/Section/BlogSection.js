@@ -51,13 +51,7 @@ export default function BlogSection({
         linkObj={linkObj}
         sendValue={sendValue}
       />
-      {/* <Link
-        autocompleteValue={autocompleteValue}
-        content={content}
-        setContent={setContent}
-        link={link}
-        setLink={setLink}
-      /> */}
+
       {autocompleteValue === "photo" && (
         <UploadAndDisplayImage
           selectedImage={selectedImage}
