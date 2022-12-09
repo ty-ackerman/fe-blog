@@ -1,12 +1,11 @@
 import { useState, useRef } from "react";
-import { TextField } from "@mui/material";
+import { TextField, Button } from "@mui/material";
 import BlogSection from "../Section/BlogSection";
 import BlogSectionRender from "../Section/BlogSectionRender";
-
 export default function BlogArticle() {
   const SECTION_TYPES = {
     paragraph: "paragraph",
-    link: "link",
+    "ordered list": "ordered list",
     photo: "photo",
   };
   const [sections, setSections] = useState([]);
@@ -37,6 +36,7 @@ export default function BlogArticle() {
         sections={sections}
         setSections={setSections}
         key={showComponent.length}
+        handleSubmit={handleSubmit}
       />,
     ]);
   };
@@ -45,7 +45,7 @@ export default function BlogArticle() {
     ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
       content: content,
     }),
-    ...(SECTION_TYPES[autocompleteValue] === "link" && {
+    ...(SECTION_TYPES[autocompleteValue] === "ordered list" && {
       content: content,
       link: link,
     }),
@@ -83,6 +83,10 @@ export default function BlogArticle() {
   };
   console.log(articleObj);
   console.log(sections);
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    sendValue({ ...sectionObj, id: Math.random() });
+  };
   return (
     <div className="flex flex-col items-center">
       <TextField inputRef={titleRef} placeholder="Title"></TextField>
@@ -107,9 +111,17 @@ export default function BlogArticle() {
         sections={sections}
         setSections={setSections}
         key={showComponent.length}
+        handleSubmit={handleSubmit}
       />
       {showComponent.map((item) => item)}
       <button onClick={handleButtonClick}>Click to add component</button>
+      <Button
+        onClick={() => {
+          handleSubmit(sectionObj);
+        }}
+      >
+        Submit
+      </Button>
       <BlogSectionRender
         blogObject={sections}
         articleObj={articleObj}
