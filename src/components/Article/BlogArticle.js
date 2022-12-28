@@ -16,12 +16,10 @@ export default function BlogArticle() {
   const titleRef = useRef("");
   const descriptionRef = useRef("");
   const [showComponent, setShowComponent] = useState([]);
-
-  useEffect(() => {
-    const id = Math.random();
-    setSections((prevSections) => [...prevSections, { ...sectionObj, id }]);
-  }, []);
-
+  const [paragraphContent, setParagraphContent] = useState(content);
+  const handleParagraphChange = (event) => {
+    setParagraphContent(event.target.value);
+  };
   const handleButtonClick = () => {
     setShowComponent([
       ...showComponent,
@@ -42,13 +40,15 @@ export default function BlogArticle() {
         setSections={setSections}
         key={showComponent.length}
         handleSubmit={handleSubmit}
+        paragraphContent={paragraphContent}
+        handleParagraphChange={handleParagraphChange}
       />,
     ]);
   };
   const sectionObj = {
     type: SECTION_TYPES[autocompleteValue],
     ...(SECTION_TYPES[autocompleteValue] === "paragraph" && {
-      content: content,
+      content: paragraphContent,
     }),
     ...(SECTION_TYPES[autocompleteValue] === "ordered list" && {
       content: content,
@@ -117,6 +117,8 @@ export default function BlogArticle() {
         setSections={setSections}
         key={showComponent.length}
         handleSubmit={handleSubmit}
+        paragraphContent={paragraphContent}
+        handleParagraphChange={handleParagraphChange}
       />
       {showComponent.map((item) => item)}
       <button onClick={handleButtonClick}>Click to add component</button>

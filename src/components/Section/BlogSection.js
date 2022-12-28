@@ -18,10 +18,11 @@ export default function BlogSection({
   link,
   linkObj,
   handleSubmit,
+  handleParagraphChange,
+  paragraphContent,
 }) {
   const [showComponent, setShowComponent] = useState([]);
   const [values, setValues] = useState([]);
-
   function handleChange(event) {
     // Get the value of the textbox
     const value = event.target.value;
@@ -29,6 +30,7 @@ export default function BlogSection({
     // Add the new value to the array in state
     setValues([...values, value]);
   }
+
   const handleButtonClick = () => {
     setShowComponent([...showComponent, <TextField onChange={handleChange} />]);
     console.log(values);
@@ -51,6 +53,8 @@ export default function BlogSection({
           sectionObj={sectionObj}
           linkObj={linkObj}
           sendValue={sendValue}
+          handleParagraphChange={handleParagraphChange}
+          paragraphContent={paragraphContent}
         />
       )}
       {autocompleteValue === "ordered list" && (
