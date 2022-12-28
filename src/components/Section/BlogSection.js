@@ -1,5 +1,5 @@
 import { Button, TextField } from "@mui/material";
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import Paragraph from "../SectionType/Paragraph";
 import BlogSectionDropDown from "./BlogSectionDropDown";
 import UploadAndDisplayImage from "../UploadandDisplayImage";
@@ -32,6 +32,7 @@ export default function BlogSection({
   const handleButtonClick = () => {
     setShowComponent([...showComponent, <TextField onChange={handleChange} />]);
     console.log(values);
+    setContent(values);
   };
   return (
     <div className="flex flex-col items-center">

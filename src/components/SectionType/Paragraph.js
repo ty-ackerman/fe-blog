@@ -8,7 +8,7 @@ export default function Paragraph({ content, setContent }) {
   return (
     <div>
       <TextField
-        // value={content}
+        value={content}
         onChange={handleChange}
         placeholder="Paragraph"
         multiline

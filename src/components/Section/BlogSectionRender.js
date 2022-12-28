@@ -9,7 +9,6 @@ export default function BlogSectionRender({
   editSection,
   updateSection,
 }) {
-  console.log(blogObject);
   return (
     <div className="items-center justify-center">
       <div className="text-3xl font-bold">{articleObj.title}</div>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import BlogSection from "../Section/BlogSection";
 import BlogSectionRender from "../Section/BlogSectionRender";
@@ -16,6 +16,11 @@ export default function BlogArticle() {
   const titleRef = useRef("");
   const descriptionRef = useRef("");
   const [showComponent, setShowComponent] = useState([]);
+
+  useEffect(() => {
+    const id = Math.random();
+    setSections((prevSections) => [...prevSections, { ...sectionObj, id }]);
+  }, []);
 
   const handleButtonClick = () => {
     setShowComponent([
