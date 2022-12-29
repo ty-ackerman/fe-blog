@@ -17,7 +17,7 @@ root.render(
       <Routes>
         <Route path="verbum" element={<NoteViewer />}></Route>
         <Route path="render" element={<ArticleRender />}></Route>
-        <Route path="lexical" element={<BlogArticle />}></Route>
+        <Route path="newarticle" element={<BlogArticle />}></Route>
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

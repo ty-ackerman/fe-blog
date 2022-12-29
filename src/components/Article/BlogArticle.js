@@ -15,30 +15,26 @@ export default function BlogArticle() {
   const [link, setLink] = useState("");
   const titleRef = useRef("");
   const descriptionRef = useRef("");
-  const [showComponent, setShowComponent] = useState([]);
+  const [showArticleComponent, setShowArticleComponent] = useState([]);
   const [paragraphContent, setParagraphContent] = useState(content);
   const handleParagraphChange = (event) => {
     setParagraphContent(event.target.value);
   };
-  const handleButtonClick = () => {
-    setShowComponent([
-      ...showComponent,
+  const handleNewComponentOnClick = () => {
+    setShowArticleComponent([
+      ...showArticleComponent,
       <BlogSection
+        key={showArticleComponent.length}
         setContent={setContent}
         setLink={setLink}
         sendValue={sendValue}
         setAutocompleteValue={setAutocompleteValue}
         autocompleteValue={autocompleteValue}
         SECTION_TYPES={SECTION_TYPES}
-        selectedImage={selectedImage}
-        setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
-        linkObj={linkObj}
         content={content}
-        link={link}
         sections={sections}
         setSections={setSections}
-        key={showComponent.length}
         handleSubmit={handleSubmit}
         paragraphContent={paragraphContent}
         handleParagraphChange={handleParagraphChange}
@@ -107,21 +103,20 @@ export default function BlogArticle() {
         setAutocompleteValue={setAutocompleteValue}
         autocompleteValue={autocompleteValue}
         SECTION_TYPES={SECTION_TYPES}
-        selectedImage={selectedImage}
-        setSelectedImage={setSelectedImage}
         sectionObj={sectionObj}
-        linkObj={linkObj}
         content={content}
-        link={link}
         sections={sections}
         setSections={setSections}
-        key={showComponent.length}
+        key={showArticleComponent.length}
         handleSubmit={handleSubmit}
         paragraphContent={paragraphContent}
         handleParagraphChange={handleParagraphChange}
       />
-      {showComponent.map((item) => item)}
-      <button onClick={handleButtonClick}>Click to add component</button>
+
+      {showArticleComponent.map((item) => item)}
+      <button onClick={handleNewComponentOnClick}>
+        Click to add component
+      </button>
       <Button
         onClick={() => {
           handleSubmit(sectionObj);
