@@ -52,7 +52,7 @@ export default function BlogArticle() {
     }),
     ...(SECTION_TYPES[autocompleteValue] === "ordered list" && {
       content: content,
-      link: link,
+      // link: link,
     }),
     ...(SECTION_TYPES[autocompleteValue] === "photo" && {
       photo: selectedImage,

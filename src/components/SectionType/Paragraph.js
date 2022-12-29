@@ -9,13 +9,12 @@ export default function Paragraph({ paragraphContent, handleParagraphChange }) {
   };
   console.log(paragraphSections);
   return (
-    <form onSubmit={handleParagraphSubmit}>
+    <form onSubmit={handleParagraphChange}>
       <TextField
         value={paragraphContent}
         onChange={handleParagraphChange}
         placeholder="Enter paragraph content"
       ></TextField>
-      <Button type="submit">Add paragraph</Button>
     </form>
   );
 }

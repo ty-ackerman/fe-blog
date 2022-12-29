@@ -34,8 +34,8 @@ export default function BlogSection({
   const handleButtonClick = () => {
     setShowComponent([...showComponent, <TextField onChange={handleChange} />]);
     console.log(values);
-    setContent(values);
   };
+  setContent(values);
   return (
     <div className="flex flex-col items-center">
       <BlogSectionDropDown
